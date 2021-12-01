@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+
+/* ********************* */
+/* Resets, Global Theme */
+
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+  font-family: "Sacramento", cursive;
+  font-size: 48px;
+  color: #0A014F;
+  text-align: center;
+}
+
+body {
+  font-family: "Alice", serif;
+  color: black;
+  background-color: white;
+}
+
+a {
+  font-family: "Alice", serif;
+  font-weight: bold;
+  color: #0a014f;
+}
+
+
+html, body {
+	margin: initial;
+	padding: initial;
+	font-family: system-ui, -apple-system, sans-serif;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+:root {
+	--note-color-bg: #F6CACA;
+	--ui-border-color: #0a014f;
+	--ui-action-new-fg: #0A014F;
+	--ui-action-new-bg: #cd9fcc;
+	--ui-action-neutral-fg: hsla(60, 5%, 22%, 1);
+	--ui-action-neutral-bg: hsla(60, 5%, 94%, 1);
+	--ui-action-warning-fg: hsla(0, 75%, 42%, 1);
+	--ui-action-warning-bg: hsla(0, 20%, 94%, 1);
+}
+
+.wrapper {
+	max-width: 42rem;
+	margin: 0 auto;
+	padding: 0 2rem;
+}
+
+button {
+	display: block;
+	margin: 0.25rem;
+	padding: 0.5rem;
+}
+
+/* Actions may be links or buttons. This is an non-comprehensive reset
+   for both. */
+a.action, button.action {
+	border-radius: 0.25rem;
+	border: 1px solid currentColor;
+	display: block;
+	font-size: 1rem;
+	margin: 0.25rem;
+	padding: 0.5rem;
+	text-decoration: none;
+}
+
+.action:visited {
+	color: currentColor;
+}
+
+
+
+/* ********************* */
+/* Header */
+
+.site-header {
+	background: #F6CACA;
+  border-radius: 0.25rem;
+	border: 3px solid var(--ui-border-color);
+	display: flex;
+	align-items: start;
+	margin: 0 0 4rem;
+	padding: 2rem 0;
+	position: sticky;
+	top: 0;
+}
+
+h1 {
+	margin: 0;
+	flex: 1 0 auto;
+}
+
+.action.new-note {
+	background-color: var(--ui-action-new-bg);
+	color: var(--ui-action-new-fg);
+}
+
+
+/* ********************* */
+/* Notes List */
+
+main {}
+
+.note {
+	margin: 2rem 0 3rem;
+  font-family: "Alice", serif;
+}
+
+.note-header {
+	display: grid;
+	grid-template-columns: 1fr min-content min-content;
+	align-items: start;
+}
+
+.note-meta {}
+
+.note h2 {
+	margin: 0;
+}
+
+.date-modified {
+	margin: 0 0 0.5rem;
+}
+
+.action.edit-note {
+	background-color: var(--ui-action-neutral-bg);
+	color: var(--ui-action-neutral-fg);
+}
+
+.action.delete-note {
+	background-color: var(--ui-action-warning-bg);
+	color: var(--ui-action-warning-fg);
+}
+
+.note-body {
+	background-color: var(--note-color-bg);
+	padding: 1rem;
+	margin: 0;
+	border: 3px solid var(--ui-border-color);
+}
+
+
+/* ********************* */
+/* Create/Edit Note Page */
+
+.action.cancel {
+  font-family: "Alice", serif;
+  color: black;
+	background-color: var(--ui-action-neutral-bg);
+	color: var(--ui-action-neutral-fg);
+}
+
+.action.submit {
+  font-family: "Alice", serif;
+  color: black;
+	background-color: var(--ui-action-new-bg);
+	color: var(--ui-action-new-fg);
+}
+
+/* Container for label + input + errors */
+.form-field {
+	margin-top: 2rem;
+}
+
+label, input, textarea {
+  font-family: "Alice", serif;
+  color: black;
+	display: block;
+	font-family: inherit;
+	font-size: 100%;
+}
+
+label {
+  font-family: "Alice", serif;
+  color: black;
+	margin-bottom: .5rem;
+	font-size: 1.25rem;
+}
+
+input[type="text"] {
+  font-family: "Alice", serif;
+  color: black;
+	padding: 0.25em;
+	width: 32em;
+	accent-color: var(--note-accent-color);
+}
+
+textarea {
+  font-family: "Alice", serif;
+  color: black;
+	padding: 0.25em;
+	width: 32em;
+	height: 18em;
+	accent-color: var(--note-accent-color);
+	overflow: auto;
+	/* Restrict input resizing to height only */
+	resize: vertical;
+}
+
+.input-error {
+	margin-top: 0.5rem;
+	color: var(--ui-action-warning-fg);
+}
+
+.flash-message {
+  font-family: "Alice", serif;
+	background-color: var(--ui-action-neutral-bg);
+	color: var(--ui-action-neutral-fg);
+	padding: 0.5rem;
+	font-style: italic;
+	border: 1px solid var(--ui-border-color);
+}
+
+input[type="submit"] {}
+
+/* ********************* */
+/* Delete Note Page */
+
+.form-delete-note .form-field {
+	display: flex;
+}
+
+.form-delete-note .form-field > * {
+	flex: 0 1 auto;
+}

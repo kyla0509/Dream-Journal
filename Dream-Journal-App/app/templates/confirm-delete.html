@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block header_action %}<a
+  class="action cancel"
+  href="{{ url_for('index') }}"
+  >Cancel</a
+>{% endblock %} {% block content %}
+<p>
+  Are you sure you want to delete the note <strong>{{ note_title }}</strong>?
+</p>
+<form action="" method="post" novalidate class="form-delete-note">
+  {{ form.hidden_tag() }}
+
+  <div class="form-field">
+    {{ form.submit(class="action delete-note") }}
+    <a class="action cancel" href="{{ url_for('index') }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}

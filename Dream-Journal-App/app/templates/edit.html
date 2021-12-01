@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block header_action %}<a
+  class="action cancel"
+  href="{{ url_for('index') }}"
+  >Cancel</a
+>{% endblock %} {% block content %}
+<form action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+
+  <! --- title field --->
+  <div class="form-field">
+    {{ form.note_title.label }} {{ form.note_title(autofocus="", maxlength="80")
+    }} {% for error in form.note_title.errors %}
+    <p class="input-error">{{ error }}</p>
+    {% endfor -%}
+  </div>
+
+  <! --- body field --->
+  <div class="form-field">
+    {{ form.note_body.label }} {{ form.note_body(spellcheck="true",
+    maxlength="4000") }} {% for error in form.note_body.errors %}
+    <p class="input-error">{{ error }}</p>
+    {% endfor -%}
+  </div>
+
+  <div class="form-field">
+    {{ form.submit(class="action submit") }}
+  </div>
+</form>
+{% endblock %}

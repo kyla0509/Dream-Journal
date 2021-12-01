@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block header_action %}<a
+  class="action new-note"
+  href="{{ url_for('new_note') }}"
+  >New Note</a
+>{% endblock %} {% block content %} {% if not notes %}
+<p class="flash-message">No notes in database. Create a new one!</p>
+{% endif %} {%- for note in notes %}
+<article class="note">
+  <div class="note-header">
+    <div class="note-meta">
+      <h2>{{ note.title }}</h2>
+      <p class="date-modified">
+        {{ note.date_modified.strftime('%m/%d/%Y %I:%M:%S %p') }}
+      </p>
+    </div>
+    <a
+      class="action edit-note"
+      href="{{ url_for('edit_note', note_id=loop.revindex) }}"
+      >Edit</a
+    >
+    <a
+      class="action delete-note"
+      href="{{ url_for('delete_note', note_id=loop.revindex) }}"
+      >Delete</a
+    >
+  </div>
+
+  <p class="note-body">{{ note.body.replace("\n", "<br />") | safe }}</p>
+</article>
+{% endfor -%} {% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {%- if title %}
+    <title>Ky - {{ title }}</title>
+    {% else %}
+    <title>Dream Journal!</title>
+    {% endif -%}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Alice&family=Sacramento&display=swap");
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="site-header">
+        <h1>Dream Journal!</h1>
+        {% block header_action %}{% endblock %}
+      </header>
+
+      <! --- flashes done message --->
+      <div class="flashed-messages">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <p class="flash-message">{{ message }}</p>
+        {% endfor %} {% endif %} {% endwith %}
+      </div>
+
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </body>
+</html>
